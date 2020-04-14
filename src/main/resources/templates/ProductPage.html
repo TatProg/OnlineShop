@@ -1,0 +1,66 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'></meta>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'></meta>
+    <title>Catalog</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'></meta>
+    <link rel='stylesheet' type='text/css' media='screen' th:href='@{/styles/main.css}'></link>
+    <script th:src='@{/js/main.js}'></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <nav class="mynav">
+                <div class="logo-container"><img class="logo" th:src='@{/images/logo.png}'/></div>
+                <ul class="nav-list">
+                    <li>
+                        <a href="#">
+                            <img class="navbar-icons" src="https://img.icons8.com/metro/26/000000/search.png"/>
+                            <input type="text" class="search-field"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/"><img class="navbar-icons" src="https://img.icons8.com/material-outlined/24/000000/list.png"/>Каталог</a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="navbar-icons" src="https://img.icons8.com/material-outlined/24/000000/checkout.png"/>Оформить заказ</a>
+                    </li>
+                    <li><a href="#"><img class="navbar-icons" src="https://img.icons8.com/material-outlined/24/000000/user--v1.png"/>Личный кабинет</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="productPage-content">
+            <h3 th:text="${product.name}">ProductName</h3>
+            <div class="productPage-content-item">
+                <img th:src="@{/product/{productId}/image(productId=${product.id})}"/>
+            </div>
+            <div class="productPage-content-item">
+                <table>
+                    <tr>
+                        <td><span>Цена</span></td>
+                        <td><span th:text="${product.price}">0</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Колличество</span></td>
+                        <td><span th:text="${product.quantity}">0</span></td>
+                    </tr>
+                    <tr>
+                        <td><br/></td>
+                    </tr>
+                    <tr>
+                        <td><a>Добавить в корзину</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <p th:text="${product.description}">Some description</p>
+            </div>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+</html>
